@@ -11,10 +11,25 @@ private float maxHealth;
 private float attackDamage;
 private float armor;
 private float speed;
+private float currentHealth;
+
+public void damage(float amount) {
+currentHealth -= amount;
+if (currentHealth < 0) currentHealth = 0;
+}
+
+public boolean isDead() {
+return currentHealth <= 0;
+}
+
+public float getCurrentHealth() {
+return currentHealth;
+}
 
 public NecroSkeletonStats(SkeletonClass skeletonClass, float powerMultiplier) {
 this.skeletonClass = skeletonClass;
 applyBaseStats(powerMultiplier);
+currentHealth = maxHealth;
 }
 
 private void applyBaseStats(float powerMultiplier) {
